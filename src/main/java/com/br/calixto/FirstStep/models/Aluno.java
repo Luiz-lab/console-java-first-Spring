@@ -1,14 +1,23 @@
 package com.br.calixto.FirstStep.models;
 
+import java.util.List;
+
 public class Aluno {
     private String nome;
-    private double[] nota;
+    private List<Float> nota;
 
-    public Aluno(String nome, double nota){
-        nome = this.nome;
-        nota = this.nota;
+    // public Aluno(String nome, double nota){
+    //     nome = this.nome;
+    // }
 
+    public List<Float> getNota() {
+        return nota;
     }
+    public void setNota(List<Float> nota) {
+        this.nota = nota;
+    }
+
+ 
     public String getNome() {
         return nome;
     }
@@ -16,26 +25,28 @@ public class Aluno {
         this.nome = nome;
     }
 
-    public double[] getNota() {
-        return nota;
-    }
-    public void setNota(double[] nota) {
-        this.nota = nota;
-    }
+    public Float media(){
+        float media = 0;
 
-    public void alunoAprovado(double[]notas){
-        this.nota[] = notas[]
-
-        if(this.nota >5){
-            System.out.println("Aluno Aprovado");
+        if(this.nota != null){
+            for(Float nota:this.nota){
+                media += nota;
+            }
+            media = media/this.nota.size();
         }
-        else if(this.nota =5){
-            System.out.println("Aluno em Recuperação");
+        return media;
+    }
+
+    public String statusAluno(){
+        var media = this.media();
+        if (media<5) {
+            return "Reprovado" ;
+        }
+        if(media >= 5 && media <7){
+            return "Recuperação";
         }
         else {
-            System.out.println("Aluno Reprovado");
+            return "Aprovado";
         }
-    }
-    
-
+    }   
 }
